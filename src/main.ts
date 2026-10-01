@@ -1,11 +1,11 @@
 import "./style.css";
 import manifest from "./art.json";
-import { Match, type Stats } from "./game";
+import { Match, SHOT_KEYS, type Stats } from "./game";
 const canvas = document.createElement("canvas");
 canvas.width = canvas.height = 600;
 canvas.setAttribute(
   "aria-label",
-  "Tennis Championships — frecce per muoversi, spazio per servire e colpire",
+  "Tennis Championships — frecce per muoversi, W lob, S drop shot, A slice, D topspin",
 );
 canvas.tabIndex = 0;
 document.querySelector("#app")!.replaceChildren(canvas);
@@ -80,6 +80,17 @@ function text(
   c.textAlign = align;
   c.textBaseline = "top";
   c.fillText(t, x, y);
+}
+function enterButton(y: number) {
+  c.fillStyle = "#666";
+  c.beginPath();
+  c.roundRect(222, y, 144, 34, 8);
+  c.fill();
+  c.fillStyle = "#fff";
+  c.beginPath();
+  c.roundRect(226, y + 2, 136, 27, 6);
+  c.fill();
+  text("Enter", 294, y + 5, 18, "#666", "center");
 }
 function bars(s: Stats, x: number, y: number) {
   for (let i = 0; i < 4; i++) {
@@ -161,7 +172,8 @@ function advance() {
 addEventListener("keydown", (e) => {
   if (
     [
-      "Space",
+      ...SHOT_KEYS.map(([key]) => key),
+      "Enter",
       "ArrowUp",
       "ArrowDown",
       "ArrowLeft",
@@ -172,7 +184,7 @@ addEventListener("keydown", (e) => {
     e.preventDefault();
     if (!keys.has(e.code)) {
       pressed.add(e.code);
-      if (e.code === "Space") {
+      if (e.code === "Enter") {
         const before = screen;
         advance();
         if (screen !== before) pressed.delete(e.code);
@@ -218,7 +230,7 @@ canvas.addEventListener("click", (e) => {
     };
     edit(cpu, 184, 86);
     edit(user, 284, 266);
-    if (y > 520) advance();
+    if (y >= 480 && y <= 520 && x >= 220 && x <= 370) advance();
     if (x > 200 && x < 400 && y > 380 && y < 435) {
       cpu = cpu.map((_, i) =>
         i < 4 ? Math.floor(Math.random() * 10) : 0,
@@ -263,9 +275,22 @@ function player(i: number) {
 }
 function render() {
   c.clearRect(0, 0, 600, 600);
-  if (screen === "menu") art("menu");
-  else if (screen === "setup") {
+  if (screen === "menu") {
+    art("menu");
+    text("Arrow keys: move / aim", 300, 130, 18, "#fff", "center");
+    text(
+      "W Lob   S Drop shot   A Slice   D Topspin",
+      300,
+      156,
+      17,
+      "#fff",
+      "center",
+    );
+    text("Serve: press a shot key twice", 300, 182, 17, "#fff", "center");
+    text("First to 3 games, win by 2", 300, 208, 17, "#fff", "center");
+  } else if (screen === "setup") {
     art("setup");
+    enterButton(480);
     bars(cpu, 184, 86);
     bars(user, 284, 266);
   } else if (screen === "select") {
@@ -281,6 +306,7 @@ function render() {
     bars(stats[hover]!, 234, 406);
   } else if (screen === "bracket") {
     art("bracket");
+    enterButton(484);
     branch(0);
     branch(opponent);
     for (let i = 0; i < 16; i++)
@@ -317,6 +343,22 @@ function render() {
     text("CLICK TO PLAY AGAIN", 300, 510, 20, "#fff", "center");
   } else if (match) {
     art("court");
+    const marker = match.aimMarker(),
+      mp = 1 + marker.point.y / 360 / 10;
+    const mx = 300 + marker.point.x * mp,
+      my = 300 + marker.point.y / 2;
+    c.save();
+    c.strokeStyle = marker.locked ? "#ffdc68" : "#75ffff";
+    c.lineWidth = 2;
+    c.beginPath();
+    c.ellipse(mx, my, 12, 6, 0, 0, Math.PI * 2);
+    c.moveTo(mx - 19, my);
+    c.lineTo(mx + 19, my);
+    c.moveTo(mx, my - 10);
+    c.lineTo(mx, my + 10);
+    c.stroke();
+    text(marker.shot.toUpperCase(), mx, my - 23, 11, c.strokeStyle, "center");
+    c.restore();
     player(1);
     const b = match.ball,
       per = 1 + b.y / 360 / 10;
@@ -331,6 +373,14 @@ function render() {
       art("ball", 300 + b.x * per, 300 + b.y / 2 - b.z * per, per);
     }
     art("exit", 575, 5);
+    text(
+      "W LOB   S DROP SHOT   A SLICE   D TOPSPIN",
+      300,
+      548,
+      12,
+      "#fff",
+      "center",
+    );
     text(
       `${match.names[match.server]} ${match.score()} ${match.names[1 - match.server]}    ${match.games[0]} - ${match.games[1]}`,
       6,
@@ -352,6 +402,7 @@ function render() {
       );
       text(match.message, 300, 205, 30, "#fff", "center");
       if (match.phase === "game" || match.phase === "over") {
+        enterButton(356);
         text(match.names[0], 186, 225, 24, "#ffea99", "left", "Dot");
         text(match.names[1], 186, 270, 24, "#ffea99", "left", "Dot");
         text(String(match.games[0]), 369, 225, 24, "#ffea99", "left", "Dot");

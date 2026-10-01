@@ -9,14 +9,14 @@
       <use ffdec:characterId="17" height="42.0" transform="matrix(1.4393, 0.0, 0.0, 1.4393, 288.05, 506.1)" width="398.65" xlink:href="#sprite0"/>
     </g>
     <use ffdec:characterId="34" height="560.0" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)" width="560.0" xlink:href="#shape3"/>
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
     <use ffdec:characterId="40" height="355.95" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)" width="447.5" xlink:href="#shape6"/>
     <use ffdec:characterId="41" height="23.9" transform="matrix(1.0, 0.0, 0.0, 1.0002, 82.0, 82.0)" width="84.0" xlink:href="#text1"/>
     <use ffdec:characterId="42" height="23.9" transform="matrix(1.0, 0.0, 0.0, 1.0002, 82.0, 112.0)" width="84.0" xlink:href="#text2"/>
@@ -28,7 +28,7 @@
     <use ffdec:characterId="44" height="23.9" transform="matrix(1.0, 0.0, 0.0, 1.0002, 182.0, 352.05)" width="84.0" xlink:href="#text4"/>
     <use ffdec:characterId="45" height="31.85" transform="matrix(1.0, 0.0, 0.0, 1.0, 439.85, 174.5)" width="46.0" xlink:href="#text5"/>
     <use ffdec:characterId="46" height="31.85" transform="matrix(1.0, 0.0, 0.0, 1.0002, 83.0, 260.3)" width="46.0" xlink:href="#text6"/>
-    <use ffdec:characterId="47" height="36.0" transform="matrix(1.0, 0.0, 0.0, 1.0, 222.0, 480.0)" width="144.0" xlink:href="#sprite3"/>
+
   </g>
   <defs>
     <g id="shape0">

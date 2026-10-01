@@ -9,26 +9,26 @@
       <use ffdec:characterId="17" height="42.0" transform="matrix(1.4393, 0.0, 0.0, 1.4393, 288.05, 506.1)" width="398.65" xlink:href="#sprite0"/>
     </g>
     <use ffdec:characterId="319" height="560.0" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)" width="560.0" xlink:href="#shape3"/>
-    <use ffdec:characterId="47" height="36.0" transform="matrix(1.0, 0.0, 0.0, 1.0, 223.0, 484.0)" width="144.0" xlink:href="#sprite1"/>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <use ffdec:characterId="55" height="23.9" id="mcLine" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)" width="64.0" xlink:href="#sprite2"/>
-    
-    
+
+
   </g>
   <defs>
     <g id="shape0">

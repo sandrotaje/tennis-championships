@@ -14,7 +14,7 @@
     <use ffdec:characterId="26" height="30.0" transform="matrix(1.0, 0.0, 0.0, 1.0, 180.0, 360.0)" width="229.95" xlink:href="#button1"/>
     <use ffdec:characterId="27" height="30.0" transform="matrix(1.0, 0.0, 0.0, 1.0, 180.0, 390.0)" width="229.95" xlink:href="#button2"/>
     <use ffdec:characterId="28" height="69.7" transform="matrix(1.0, 0.0, 0.0, 1.0, 4.05, 38.7)" width="367.0" xlink:href="#text1"/>
-    <use ffdec:characterId="29" height="83.5" transform="matrix(1.0, 0.0, 0.0, 1.0, 145.5, 123.25)" width="388.0" xlink:href="#text2"/>
+
     <use ffdec:characterId="30" height="25.9" transform="matrix(1.0004, 0.0, 0.0, 1.0014, 289.35, 330.0)" width="114.0" xlink:href="#text3"/>
     <use ffdec:characterId="31" height="25.9" transform="matrix(1.0003, 0.0, 0.0, 1.0014, 289.4, 360.0)" width="114.0" xlink:href="#text4"/>
     <use ffdec:characterId="32" height="25.9" transform="matrix(1.0004, 0.0, 0.0, 0.9998, 289.35, 390.0)" width="92.0" xlink:href="#text5"/>

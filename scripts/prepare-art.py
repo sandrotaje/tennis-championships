@@ -9,11 +9,11 @@ def add(name,path,scene=False,remove=[]):
  if scene:
   s=s.replace(m[0],'<g transform="matrix(1,0,0,1,0,0)">',1);s=re.sub(r'width="[\d.]+px"','width="600px"',s,count=1);s=re.sub(r'height="[\d.]+px"','height="600px"',s,count=1);w=h=600;ox=oy=0
  (out/(name+'.svg')).write_text(s);manifest[name]={'w':w,'h':h,'ox':ox,'oy':oy}
-for n,i,rm in [('menu',15,[]),('setup',33,[35]),('select',284,list(range(302,318))+[35]),('bracket',318,list(range(321,339)))]:add(n,src/f'sprites/DefineSprite_{i}/1.svg',True,rm)
+for n,i,rm in [('menu',15,[29]),('setup',33,[35,47]),('select',284,list(range(302,318))+[35]),('bracket',318,list(range(321,339))+[47])]:add(n,src/f'sprites/DefineSprite_{i}/1.svg',True,rm)
 add('champion',src/'sprites/DefineSprite_339/2.svg',True,[344])
 add('message',src/'sprites/DefineSprite_256/8.svg',False,[258,259])
 add('point',src/'sprites/DefineSprite_256/13.svg',False,[258,259])
-add('gamepanel',src/'sprites/DefineSprite_256/19.svg',False,[259,269,270,263,264,265,266])
+add('gamepanel',src/'sprites/DefineSprite_256/19.svg',False,[259,269,270,263,264,265,266,47])
 add('court',src/'shapes/54.svg',True)
 add('exit',src/'buttons/DefineButton2_279/1_up.svg')
 add('barbase',src/'shapes/36.svg')

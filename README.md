@@ -1,35 +1,26 @@
 # Tennis Championships
 
-A modern browser remake of the old GameDesign/Tennis Championships Flash tennis game.
+Native TypeScript and Canvas 2D reconstruction of the supplied Tennis Championships game. No Flash player, Ruffle, WebAssembly emulator, or SWF is loaded by the application.
 
-The goal is to preserve the original design: tiny players, one-button strokes, timing-based depth, directional aiming, a surprisingly capable CPU, and a 16-player tournament.
+The original vector artwork was converted offline into SVG images in `public/art`. Animated players use individually exported animation frames. Original fonts are ordinary browser assets. The game runs without audio. The original SWF in `assets` is retained only as source reference; it is excluded from the production bundle.
 
-## Controls
+`src/game.ts` implements the simulation at 30 Hz, including keyboard movement, serving, shots, gravity, bounces, computer opponent, service faults, tennis scoring, and match progression. `src/main.ts` implements the menus, exhibition settings, sixteen-player tournament, input, and Canvas rendering. There is no ActionScript interpreter.
 
-- **Arrow keys** — move; while swinging, influence shot direction/depth
-- **Space** — toss / serve / swing
-- **Esc** — pause
-- **Enter / Space** — confirm menu selections
+## Run
 
-## Development
-
-```bash
-npm install
+```sh
+npm ci
 npm run dev
 ```
 
-Production build:
+Arrow keys move and aim, Space tosses/strikes the ball and advances screens, Escape returns to the menu. A serve takes two presses: toss, then strike near the top of the toss. The exhibition skill bars are clickable. Touch controls are intentionally absent.
 
-```bash
+## Validate and build
+
+```sh
+npm test
 npm run build
+npm run preview
 ```
 
-The game is deliberately implemented on Canvas without a physics engine. Ball flight, bounce, player reach and CPU decisions are deterministic game logic so the feel can be tuned toward the original Flash game.
-
-## Reverse-engineering notes
-
-The recovered game is an ActionScript 2 / Flash 7 title. The preserved roster encodes six one-digit attributes in front of each player name. This remake interprets them as:
-
-`forehand, backhand, serve, footwork, netplay, tech`
-
-Match format follows the original: first player to 3 games, win by two.
+Publish `dist`. The build needs only Node.js; the offline Flash extraction tools are not involved. The reconstruction uses the original artwork and timing reference, while gameplay behavior is implemented independently and still needs comparison through complete matches to establish exact parity.

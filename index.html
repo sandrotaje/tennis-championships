@@ -1,15 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#13231d" />
+    <meta name="theme-color" content="#ffffff" />
     <title>Tennis Championships</title>
   </head>
   <body>
     <main id="app">
-      <canvas id="game" width="600" height="600" aria-label="Tennis Championships game"></canvas>
-      <p class="help">Arrow keys to move / aim · Space to toss, serve and swing · Esc to pause</p>
+      <div id="game">
+        <p id="status" role="status">Caricamento del gioco…</p>
+      </div>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>

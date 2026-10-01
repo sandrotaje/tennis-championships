@@ -1,53 +1,24 @@
-:root {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  color: #e9f2e8;
-  background: #101914;
-  font-synthesis: none;
-  text-rendering: geometricPrecision;
+* {
+  box-sizing: border-box;
 }
-
-* { box-sizing: border-box; }
-
-html, body { margin: 0; min-width: 320px; min-height: 100%; }
+html,
 body {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(circle at 50% 18%, rgba(88, 136, 104, .18), transparent 44%),
-    #101914;
-}
-
-#app {
-  width: min(94vw, 760px);
-  display: grid;
-  gap: 12px;
-  justify-items: center;
-  padding: 24px 0;
-}
-
-canvas {
-  width: min(94vw, 600px);
-  height: auto;
-  aspect-ratio: 1 / 1;
-  image-rendering: auto;
-  border: 1px solid #476154;
-  border-radius: 6px;
-  background: #59704f;
-  box-shadow: 0 24px 70px rgba(0,0,0,.38);
-  outline: none;
-}
-
-canvas:focus-visible { box-shadow: 0 0 0 3px #d4e68a, 0 24px 70px rgba(0,0,0,.38); }
-
-.help {
   margin: 0;
-  color: #92a69a;
-  font-size: 12px;
-  text-align: center;
+  min-height: 100%;
+  background: white;
 }
-
-@media (max-width: 640px) {
-  #app { padding: 8px 0 16px; }
-  .help { padding-inline: 16px; }
+body {
+  display: grid;
+  place-items: start center;
+}
+#app {
+  width: min(100vw, 600px);
+  margin: auto;
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  outline: none;
 }
